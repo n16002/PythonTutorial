@@ -1,50 +1,64 @@
-HANDS = ['グー', 'チョキ', 'パー']
+import random
+
+HANDS = ('グー', 'チョキ', 'パー')
 
 
 def select_hand():
     """
-    コンピュータの手をランダムに決める
-    :return: HANDSの中のいずれか。
+    コンピューターの手をランダムに決める
+    :return:HAND'の中のいずれか。
     """
     import random
-    random.choice(HANDS)
 
-    return
+    a = random.randint(0, 2)
+
+    return a
 
 
 def judgement(player, computer):
-    """
-    じゃんけんの勝敗を判定する。
-    :param player: HANDSの中のどれか
-    :param computer: HANDSの中のどれか
-    :return: プレイヤーが勝ちの場合は１、あいこは０。負けは−１を返す
-    """
-    pass
+    if player == computer:
+        return 0
+
+    if player == 0 and computer ==1:
+        return 1
+    if player ==1 and computer  ==2:
+        return 1
+    if player ==2 and computer  ==0:
+        return 1
+
+    else:
+        return -1
+
+
 
 def save_score(result):
-    """
-    'score.txt'に戦績を保存。
-    win:x lose:y draw:zのディクショナリデータを保存する。
-    :param result:
-    :return: None
-    """
-    a = open("score.txt", "w")
+    res = {"win":0, "lose":0, "draw":0}
 
-    res = {'win': x, 'lose': y, 'draw': z}
+    with open ("score.txt" ,"r") as f:
+        res =random.load(f)
 
-    a.write(res)
 
-    a.close()
+    with open('score.txt', 'w') as f:
 
-    return
+        if result == 1:
+            res["win"]  +=1
+        if result == -1:
+            res["lose"] +=1
+        if result == 0:
+            res["draw"] +=1
+        a = random .dumps(res)
+        f.write(a)
 
+    return None
 
 if __name__ == '__main__':
-    player = int(input('グー(1)/チョキ(2)/パー(3)を選んでください(数字): '))
+    player = int(input('グー(1)/チョキ(2)/パー(3)を選んでください(数字):'))-1
     computer = select_hand()
     result = judgement(player, computer)
-    # コンピュータの手と勝敗の結果を表示
-    print(computer)
+    # コンピューターの手と勝敗の結果を表示
+
+    print("computer:", HANDS[computer])
+
     print(result)
 
     save_score(result)

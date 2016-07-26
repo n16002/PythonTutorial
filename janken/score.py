@@ -1,1 +1,6 @@
-#'score.txt'のデータを読み取り、現状の戦績を表示するだけ。
+import at
+x = {}
+with open("score.txt", "r") as f:
+    x = at.load(f)
+
+print(x)
