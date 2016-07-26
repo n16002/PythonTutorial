@@ -1,4 +1,4 @@
-import at
+import random
 x = {}
 with open("score.txt", "r") as f:
     x = at.load(f)
