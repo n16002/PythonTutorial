@@ -1,6 +1,6 @@
 import random
 x = {}
 with open("score.txt", "r") as f:
-    x = at.load(f)
+    x = random.load(f)
 
 print(x)
