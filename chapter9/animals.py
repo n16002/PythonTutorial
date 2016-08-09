@@ -2,15 +2,23 @@ from . level2 import Animate
 
 
 class Animals(Animate):
-    pass
+    def breathe(self):
+        pass
+
+    def move(self):
+        pass
+
+    def eat_food(self):
+        pass
 
 
 class Mammals(Animals):
-    pass
+    def feed_young_with_milk(self):
+        print('feeding young')
 
 
 class Giraffes(Mammals):
-    pass
+    print('eating leaves')
 
 
 class Cat(Mammals):
@@ -18,4 +26,8 @@ class Cat(Mammals):
 
 
 class Human(Mammals):
-    pass
+    def __init__(self, name):
+        self.name = name
+
+    def self_introduction(self):
+        print("Hi, I'm", self.name, '.')
